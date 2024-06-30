@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karol Bolgar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="card">
+        <div class="profile-pic"></div>
+        <h1>Karol Bolgar</h1>
+        <!-- <h2>Projects</h2> -->
+        <a href="about-me.html" class="button">About Me</a>
+        <a href="work-experience.html" class="button">Work Experience</a>
+        <a href="hard-skills.html" class="button">Hard Skills</a>
+        <div class="social-icons">
+            <a href="https://x.com/karlogb1010"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/karlogb"><i class="fab fa-github"></i></a>
+            <a href="https://open.spotify.com/user/a4nbhh5zyialpgpianz4oun2m?si=98f463f72dc84eb6"><i class="fab fa-spotify"></i></a>
+            <a href="#" id="copy-btc"><i class="fab fa-bitcoin"></i></a>
+        </div>
+        <div class="notification" id="notification">Bitcoin address successfully copied</div>
+    </div>
+
+    <script>
+        document.getElementById('copy-btc').addEventListener('click', function(event) {
+            event.preventDefault();
+            const btcAddress = '1KNfbnM6YB77tnBd8gbP7iVuqQagBXc4nt';
+            navigator.clipboard.writeText(btcAddress).then(function() {
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                setTimeout(function() {
+                    notification.style.display = 'none';
+                }, 2000);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        });
+    </script>
+</body>
+</html>
