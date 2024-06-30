@@ -11,18 +11,22 @@
     <div class="card">
         <div class="profile-pic"></div>
         <h1>Karol Bolgar</h1>
-        <!-- <h2>Projects</h2> -->
+        <h2>Data Analyst</h2>
         <a href="about-me.html" class="button">About Me</a>
         <a href="work-experience.html" class="button">Work Experience</a>
         <a href="hard-skills.html" class="button">Hard Skills</a>
         <div class="social-icons">
-            <a href="https://x.com/karlogb1010"><i class="fab fa-twitter"></i></a>
-            <a href="https://github.com/karlogb"><i class="fab fa-github"></i></a>
-            <a href="https://open.spotify.com/user/a4nbhh5zyialpgpianz4oun2m?si=98f463f72dc84eb6"><i class="fab fa-spotify"></i></a>
-            <a href="https://www.linkedin.com/in/karol-bolgar/"><i class="fab fa-linkedin"></i></a>
-            <a href="#" id="copy-btc"><i class="fab fa-bitcoin"></i></a>
+            <a href="https://github.com/karlogb" target="_blank" class="github"><i class="fab fa-github"></i></a>
+            <a href="https://open.spotify.com/user/a4nbhh5zyialpgpianz4oun2m?si=98f463f72dc84eb6" target="_blank" class="spotify"><i class="fab fa-spotify"></i></a>
+            <a href="https://www.linkedin.com/in/karol-bolgar/" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
+            <a href="#" id="copy-btc" class="bitcoin"><i class="fab fa-bitcoin"></i></a>
         </div>
-        <div class="notification" id="notification">Bitcoin address successfully copied</div>
+        <div class="notification" id="notification">
+            Bitcoin address successfully copied
+            <div class="progress-bar">
+            <span></span>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -31,9 +35,15 @@
             const btcAddress = '1KNfbnM6YB77tnBd8gbP7iVuqQagBXc4nt';
             navigator.clipboard.writeText(btcAddress).then(function() {
                 const notification = document.getElementById('notification');
-                notification.style.display = 'block';
+                notification.classList.add('show');
+                const progressBar = notification.querySelector('.progress-bar span');
+                progressBar.style.width = '100%';
                 setTimeout(function() {
-                    notification.style.display = 'none';
+                    progressBar.style.width = '0';
+                }, 10); // Start the animation
+
+                setTimeout(function() {
+                    notification.classList.remove('show');
                 }, 2000);
             }, function(err) {
                 console.error('Could not copy text: ', err);
