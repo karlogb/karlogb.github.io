@@ -7,7 +7,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #0d1117;
     color: #a2d2fb;
-    padding: 0; /* Updated padding to 0 to prevent scrolling */
+    padding: 0;
 }
 
 .card {
@@ -84,13 +84,13 @@ h3 {
 
 .about-me-container, .work-experience-container, .skills-container {
     max-width: 800px;
-    width: 100%; /* Ensure the container takes full width */
+    width: 100%;
     background-color: #161b22;
     color: #c6cdd5;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    margin: 20px 0; /* Updated margin to prevent extra space */
+    margin: 20px 0;
 }
 
 .about-me-container h1, .work-experience-container h1, .skills-container h1 {
@@ -105,7 +105,7 @@ h3 {
 }
 
 .work-experience-container .job {
-    margin-bottom: 40px; /* Zvýšenie medzery medzi jednotlivými pracovnými pozíciami */
+    margin-bottom: 40px;
 }
 
 .work-experience-container .job ul {
