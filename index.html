@@ -31,6 +31,50 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to get the current URL
+            function getCurrentUrl() {
+                return window.location.href;
+            }
+
+            // Function to get the referrer URL
+            function getReferrerUrl() {
+                return document.referrer;
+            }
+
+            // Function to generate a unique internal session ID
+            function generateInternalSessionId() {
+                return 'session-' + Math.random().toString(36).substr(2, 9);
+            }
+
+            // Create the data object
+            const data = {
+                url: getCurrentUrl(),
+                referrer: getReferrerUrl(),
+                internal_session_id: generateInternalSessionId(),
+                event: 'page_view',  // Default event type, can be changed if needed
+                analytics_consent: 'granted'  // Assume consent is granted for this example
+            };
+
+            // Send the data to the server
+            fetch('https://www.attribution.dexfinity.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log('Success:', result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+
+    <script>
         document.getElementById('copy-btc').addEventListener('click', function(event) {
             event.preventDefault();
             const btcAddress = '1KNfbnM6YB77tnBd8gbP7iVuqQagBXc4nt';
