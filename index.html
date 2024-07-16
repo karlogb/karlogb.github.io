@@ -46,7 +46,7 @@
             function getOrCreateInternalSessionId() {
                 let sessionId = sessionStorage.getItem('internal_session_id');
                 if (!sessionId) {
-                    sessionId = 'session-' + Math.random().toString(36).substr(2, 9);
+                    sessionId = Math.floor(Math.random() * 10000000) + 1;
                     sessionStorage.setItem('internal_session_id', sessionId);
                 }
                 return sessionId;
@@ -57,7 +57,7 @@
                 url: getCurrentUrl(),
                 referrer: getReferrerUrl(),
                 internal_session_id: getOrCreateInternalSessionId(),
-                event: 'page_view', 
+                event: 'page_view',
             };
     
             // Send the data to the server
@@ -68,15 +68,12 @@
                 },
                 body: JSON.stringify(data)
             })
-            .then(response => response.json())
-            .then(result => {
-                console.log('Success:', result);
-            })
             .catch(error => {
                 console.error('Error:', error);
             });
         });
     </script>
+    
     
     
 
