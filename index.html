@@ -29,50 +29,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // get the current URL
-            function getCurrentUrl() {
-                return window.location.href;
-            }
-    
-            // get the referrer URL
-            function getReferrerUrl() {
-                return document.referrer;
-            }
-    
-            // generate or retrieve the unique internal session ID
-            function getOrCreateInternalSessionId() {
-                let sessionId = sessionStorage.getItem('internal_session_id');
-                if (!sessionId) {
-                    sessionId = Math.floor(Math.random() * 10000000) + 1;
-                    sessionStorage.setItem('internal_session_id', sessionId);
-                }
-                return sessionId;
-            }
-    
-            // Create the data object
-            const data = {
-                url: getCurrentUrl(),
-                referrer: getReferrerUrl(),
-                internal_session_id: getOrCreateInternalSessionId(),
-                event: 'page_view',
-            };
-    
-            // Send the data to the server
-            fetch('https://attribution.dexfinity.com', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    </script>
     
 
     <script>
