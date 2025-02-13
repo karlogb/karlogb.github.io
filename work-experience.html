@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work Experience</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="work.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="work-experience-container">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="about-me.html">About Me</a></li>
+                <li><a href="work-experience.html">Work Experience</a></li>
+                <li><a href="hard-skills.html">Hard Skills</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="work-container">
         <h1>Work Experience</h1>
-
-        <div class="job">
+        <div class="job-card">
             <h2>Data Analyst</h2>
-            <h3>Dexfinity</h3>
-            <p>January 2020 - Present (<span class="experience-duration" data-start-date="2020-01-01"></span>)</p>
+            <h3>Dexfinity | April 2023 - Present</h3>
             <ul>
                 <li>Conducting workshops on Google Analytics and Google Tag Manager</li>
                 <li>Providing insights and recommendations based on data analysis</li>
@@ -28,11 +35,9 @@
                 <li>Administered Debian servers</li>
             </ul>
         </div>
-
-        <div class="job">
+        <div class="job-card">
             <h2>Digital Marketing Manager</h2>
-            <h3>Freelance</h3>
-            <p>January 2021 - Present (<span class="experience-duration" data-start-date="2021-01-01"></span>)</p>
+            <h3>Freelance | January  2021 - Present</h3>
             <ul>
                 <li>Designed comprehensive marketing strategies tailored to client needs</li>
                 <li>Set up tracking and analytics for various campaigns</li>
@@ -40,11 +45,9 @@
                 <li>Provided detailed reporting to clients, highlighting key performance metrics</li>
             </ul>
         </div>
-
-        <div class="job">
+        <div class="job-card">
             <h2>Web Analyst</h2>
-            <h3>Acomware</h3>
-            <p>January 2022 - May 2023 (<span class="experience-duration" data-start-date="2022-01-01" data-end-date="2023-06-01"></span>)</p>
+            <h3>Acomware | January 2022 - May 2023</h3>
             <ul>
                 <li>Managed setup and configuration of GTM/SGTM</li>
                 <li>Implemented and maintained Universal Analytics and Google Analytics 4</li>
@@ -55,11 +58,9 @@
                 <li>Conducted website speed analyses and provided optimization recommendations</li>
             </ul>
         </div>
-
-        <div class="job">
+        <div class="job-card">
             <h2>Digital Marketing Specialist</h2>
-            <h3>Invelity</h3>
-            <p>July 2017 - October 2022 (<span class="experience-duration" data-start-date="2017-07-01" data-end-date="2022-11-01"></span>)</p>
+            <h3>Invelity | July 2017 - October 2022</h3>
             <ul>
                 <li>Designed campaign structures and drafted budgets</li>
                 <li>Set up and managed campaigns across multiple advertising platforms</li>
@@ -69,51 +70,24 @@
                 <li>Provided reporting to clients using DataStudio and email</li>
             </ul>
         </div>
-
-        <div class="job">
+        <div class="job-card">
             <h2>PPC Specialist</h2>
-            <h3>Cloudtalk</h3>
-            <p>October 2021 - December 2021 (<span class="experience-duration" data-start-date="2021-10-01" data-end-date="2022-01-01"></span>)</p>
+            <h3>Cloudtalk | October 2021 - December 2021</h3>
             <ul>
                 <li>Set up B2B campaigns on Google Ads, Microsoft Ads, Twitter Ads, and Facebook Ads</li>
                 <li>Optimized campaign performance through data-driven strategies</li>
             </ul>
         </div>
-
-        <div class="job">
+        <div class="job-card">
             <h2>Ecommerce Specialist</h2>
-            <h3>LCG New Media</h3>
-            <p>July 2021 - November 2021 (<span class="experience-duration" data-start-date="2021-07-01" data-end-date="2022-12-01"></span>)</p>
+            <h3>LCG New Media | July 2021 - November 2021</h3>
             <ul>
                 <li>Structured and set up e-commerce campaigns</li>
                 <li>Drafted and managed campaign budgets</li>
                 <li>Optimized campaign performance for better ROI</li>
             </ul>
         </div>
-
         <a href="/" class="button">Back to Home</a>
     </div>
-
-    <script>
-        function calculateExperienceDuration(startDate, endDate) {
-            const start = new Date(startDate);
-            const end = endDate ? new Date(endDate) : new Date();
-            const years = end.getFullYear() - start.getFullYear();
-            const months = end.getMonth() - start.getMonth();
-            let totalMonths = years * 12 + months;
-            const displayYears = Math.floor(totalMonths / 12);
-            const displayMonths = totalMonths % 12;
-            return `${displayYears} years, ${displayMonths} months`;
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const durationElements = document.querySelectorAll('.experience-duration');
-            durationElements.forEach(function(element) {
-                const startDate = element.getAttribute('data-start-date');
-                const endDate = element.getAttribute('data-end-date');
-                element.textContent = calculateExperienceDuration(startDate, endDate);
-            });
-        });
-    </script>
 </body>
 </html>
