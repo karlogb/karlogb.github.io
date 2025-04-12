@@ -48,71 +48,7 @@ var MemStorage = class {
 var storage = new MemStorage();
 
 // server/routes.ts
-import fetch from "node-fetch";
-import fs from "fs";
-import path from "path";
-var cacheFilePath = path.join(__dirname, "github-repos-cache.json");
-function cacheRepositories(repositories) {
-  try {
-    fs.writeFileSync(cacheFilePath, JSON.stringify(repositories, null, 2));
-    console.log("Repositories cached successfully");
-  } catch (error) {
-    console.error("Error caching repositories:", error);
-  }
-}
-function getCachedRepositories() {
-  try {
-    if (fs.existsSync(cacheFilePath)) {
-      const cacheData = fs.readFileSync(cacheFilePath, "utf8");
-      return JSON.parse(cacheData);
-    }
-  } catch (error) {
-    console.error("Error reading cache file:", error);
-  }
-  return null;
-}
 async function registerRoutes(app2) {
-  app2.get("/api/github/repositories", async (req, res) => {
-    try {
-      const cachedData = getCachedRepositories();
-      if (cachedData && cachedData.length > 0) {
-        console.log("Returning cached GitHub repositories data");
-        return res.json(cachedData);
-      }
-      const apiUrl = "https://api.github.com/users/karlogb/repos?sort=updated&per_page=6";
-      const response = await fetch(apiUrl, {
-        headers: {
-          "Accept": "application/vnd.github.v3+json",
-          ...process.env.GITHUB_TOKEN && {
-            "Authorization": `token ${process.env.GITHUB_TOKEN}`
-          }
-        }
-      });
-      if (!response.ok) {
-        throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
-      }
-      const rawData = await response.json();
-      const transformedRepos = rawData.map((repo) => ({
-        id: repo.id,
-        name: repo.name,
-        description: repo.description || "No description provided",
-        language: repo.language || "N/A",
-        stars: repo.stargazers_count,
-        updated_at: repo.updated_at,
-        html_url: repo.html_url
-      }));
-      cacheRepositories(transformedRepos);
-      res.json(transformedRepos);
-    } catch (error) {
-      console.error("Error fetching GitHub repositories:", error);
-      const cachedData = getCachedRepositories();
-      if (cachedData && cachedData.length > 0) {
-        console.log("Returning cached GitHub repositories data after fetch error");
-        return res.json(cachedData);
-      }
-      res.status(500).json({ message: "Failed to fetch repositories" });
-    }
-  });
   app2.post("/api/contact", async (req, res) => {
     try {
       const { name, email, subject, message } = req.body;
@@ -133,40 +69,31 @@ async function registerRoutes(app2) {
 
 // server/vite.ts
 import express from "express";
-import fs2 from "fs";
-import path3 from "path";
+import fs from "fs";
+import path2 from "path";
 import { createServer as createViteServer, createLogger } from "vite";
 
 // vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import themePlugin from "@replit/vite-plugin-shadcn-theme-json";
-import path2 from "path";
-import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
-var vite_config_default = defineConfig({
-  plugins: [
-    react(),
-    runtimeErrorOverlay(),
-    themePlugin(),
-    ...process.env.NODE_ENV !== "production" && process.env.REPL_ID !== void 0 ? [
-      await import("@replit/vite-plugin-cartographer").then(
-        (m) => m.cartographer()
-      )
-    ] : []
-  ],
+import path from "path";
+
+export default defineConfig({
+  plugins: [react()],
   resolve: {
     alias: {
-      "@": path2.resolve(import.meta.dirname, "client", "src"),
-      "@shared": path2.resolve(import.meta.dirname, "shared"),
-      "@assets": path2.resolve(import.meta.dirname, "attached_assets")
+      "@": path.resolve(__dirname, "client", "src"),
+      "@shared": path.resolve(__dirname, "shared"),
+      "@assets": path.resolve(__dirname, "attached_assets")
     }
   },
-  root: path2.resolve(import.meta.dirname, "client"),
+  root: path.resolve(__dirname, "client"),
   build: {
-    outDir: path2.resolve(import.meta.dirname, "dist/public"),
+    outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true
   }
 });
+
 
 // server/vite.ts
 import { nanoid } from "nanoid";
@@ -203,13 +130,13 @@ async function setupVite(app2, server) {
   app2.use("*", async (req, res, next) => {
     const url = req.originalUrl;
     try {
-      const clientTemplate = path3.resolve(
+      const clientTemplate = path2.resolve(
         import.meta.dirname,
         "..",
         "client",
         "index.html"
       );
-      let template = await fs2.promises.readFile(clientTemplate, "utf-8");
+      let template = await fs.promises.readFile(clientTemplate, "utf-8");
       template = template.replace(
         `src="/src/main.tsx"`,
         `src="/src/main.tsx?v=${nanoid()}"`
@@ -223,15 +150,15 @@ async function setupVite(app2, server) {
   });
 }
 function serveStatic(app2) {
-  const distPath = path3.resolve(import.meta.dirname, "public");
-  if (!fs2.existsSync(distPath)) {
+  const distPath = path2.resolve(import.meta.dirname, "public");
+  if (!fs.existsSync(distPath)) {
     throw new Error(
       `Could not find the build directory: ${distPath}, make sure to build the client first`
     );
   }
   app2.use(express.static(distPath));
   app2.use("*", (_req, res) => {
-    res.sendFile(path3.resolve(distPath, "index.html"));
+    res.sendFile(path2.resolve(distPath, "index.html"));
   });
 }
 
@@ -241,7 +168,7 @@ app.use(express2.json());
 app.use(express2.urlencoded({ extended: false }));
 app.use((req, res, next) => {
   const start = Date.now();
-  const path4 = req.path;
+  const path3 = req.path;
   let capturedJsonResponse = void 0;
   const originalResJson = res.json;
   res.json = function(bodyJson, ...args) {
@@ -250,8 +177,8 @@ app.use((req, res, next) => {
   };
   res.on("finish", () => {
     const duration = Date.now() - start;
-    if (path4.startsWith("/api")) {
-      let logLine = `${req.method} ${path4} ${res.statusCode} in ${duration}ms`;
+    if (path3.startsWith("/api")) {
+      let logLine = `${req.method} ${path3} ${res.statusCode} in ${duration}ms`;
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
