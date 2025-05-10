@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldSkyBlock - Dynmapy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="site-header">
+            <div class="header-inner">
+                <div class="logo-container">
+                    <div class="logo-small">
+                        <img src="assets/Logo.webp" alt="Goldskyblock Logo" class="rotate-animation">
+                        <div class="logo-overlay"></div>
+                    </div>
+                    <h1 class="site-title">Goldskyblock</h1>
+                </div>
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="https://goldskyblock.cz/wiki" target="_blank" rel="noopener">Wiki</a></li>
+                        <li><a href="https://goldskyblock.gitbook.io/wiki/pravidla" target="_blank"
+                                rel="noopener">Pravidla</a></li>
+                        <li><a href="admin-team.html">Admin Team</a></li>
+                        <li><a href="dynmapy.html">Dynmapy</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="voting.html">Hlasování</a></li>
+                    </ul>
+                </nav>
+                <div class="right-menu">
+                    <div class="mobile-menu-button">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://goldskyblock.cz/wiki" target="_blank" rel="noopener">Wiki</a></li>
+                <li><a href="https://goldskyblock.gitbook.io/wiki/pravidla" target="_blank" rel="noopener">Pravidla</a>
+                </li>
+                <li><a href="admin-team.html">Admin Team</a></li>
+                <li><a href="dynmapy.html">Dynmapy</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="voting.html">Hlasování</a></li>
+            </ul>
+        </div>
+
+        <main>
+            <section class="page-header">
+                <h1>Dynmapy</h1>
+            </section>
+
+            <section class="team-section">
+                <div class="dynmap-buttons">
+                    <button id="btn-original" class="active">Original</button>
+                    <button id="btn-hc">Hardcore</button>
+                </div>
+
+                <div class="team-container">
+                    <iframe id="map-original" class="dynmap-frame active"
+                        src="http://82.208.17.24:29443/#bskyblock_world;flat;0,64,-4;0"></iframe>
+                    <iframe id="map-hc" class="dynmap-frame"
+                        src="http://82.208.17.35:29114/#skyblock;flat;0,64,-4;0"></iframe>
+                </div>
+
+                <div class="dynmap-buttons" style="margin-top: 2rem;">
+                    <a id="openMapBtn" href="http://82.208.17.24:29443/#bskyblock_world;flat;0,64,-4;0" target="_blank"
+                        class="dynmap-open-btn">
+                        Otevřít v novém okně
+                    </a>
+                </div>
+
+            </section>
+        </main>
+
+        <footer>
+            <p>Made with 💙 by <strong>Karci</strong> | Goldskyblock © <span id="current-year"></span></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

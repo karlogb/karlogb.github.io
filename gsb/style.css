@@ -1,0 +1,946 @@
+/* Import Minecraft font */
+@font-face {
+  font-family: 'Minecraft';
+  src: url('https://db.onlinewebfonts.com/t/6ab539c6fc2b21ff0b149b3d06d7f97c.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Minecraft', sans-serif;
+  color: white;
+  background-color: #111111;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.container {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.section-box {
+  width: 100%;
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.section-box p {
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+
+/* Background slider */
+.background-slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.slider-images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slider-image.active {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 5;
+}
+
+/* Header styles */
+.site-header {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1rem;
+  z-index: 20;
+  transition: background-color 0.3s ease;
+}
+
+.site-header.scrolled {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-small {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.logo-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  color: #ffb300;
+}
+
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: block;
+  }
+
+  .mobile-menu-button {
+    display: none;
+    z-index: 50;
+  }
+}
+
+.desktop-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.desktop-nav a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.desktop-nav a:hover {
+  color: #ffb300;
+}
+
+.page-header {
+  background-image: url('assets/header/1.webp');
+  /* alebo podľa cesty */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 300px;
+  /* alebo viac podľa potreby */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+}
+
+.page-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+  z-index: 0;
+}
+
+.page-header h1 {
+  position: relative;
+  z-index: 1;
+  font-size: 3rem;
+}
+
+/* Mobile menu */
+.mobile-menu-button {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 30;
+}
+
+.mobile-menu-button span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+/* Zobrazí sa len na mobiloch */
+@media (max-width: 767px) {
+  .mobile-menu-button {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+.mobile-menu-button.active span:first-child {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-button.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-button.active span:last-child {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: right 0.3s ease;
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  text-align: center;
+}
+
+.mobile-menu li {
+  margin-bottom: 1.5rem;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+  color: #ffb300;
+}
+
+/* Hero section */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+}
+
+.center-logo {
+  position: relative;
+  width: 256px;
+  height: 256px;
+  margin-bottom: 2rem;
+  transition: opacity 0.3s ease;
+}
+
+
+@media (min-width: 768px) {
+  .center-logo {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+.center-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero-content {
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+
+
+.hero-content h2 {
+  font-size: 2rem;
+  color: #ffb300;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+}
+
+.hero-content h2,
+.hero-content p {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hero-content.fade-out h2,
+.hero-content.fade-out p {
+  opacity: 0;
+}
+
+@media (min-width: 640px) {
+  .hero-content h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-content h2 {
+    font-size: 3rem;
+  }
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: #cccccc;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .hero-content p {
+    font-size: 1.5rem;
+  }
+}
+
+.join-button {
+  display: inline-block;
+  background-color: #ffb300;
+  color: white;
+  padding: 1.2rem 3rem;
+  font-family: 'Minecraft', sans-serif;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  min-width: 200px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+
+.join-button:hover {
+  background-color: rgba(255, 179, 0, 0.8);
+  transform: scale(1.05);
+}
+
+.join-button:active {
+  transform: scale(0.95);
+}
+
+/* Server status */
+.server-status {
+  padding: 3rem 1rem;
+}
+
+.status-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .status-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .status-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.server-card,
+.discord-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.server-card:hover,
+.discord-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.server-card h3,
+.discord-card h3 {
+  font-size: 1.5rem;
+  color: #ffb300;
+  margin-bottom: 0.5rem;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  background: #1e1e1e;
+  padding: 0.7em 1em;
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 8px;
+}
+
+.player img {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: #333;
+}
+
+.player span {
+  font-size: 1.1em;
+}
+
+.count {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+  color: #f7b731;
+}
+
+.player-list {
+  max-height: 500px;
+  overflow-y: auto;
+  margin-top: 1em;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.discord-card p {
+  color: #aaaaaa;
+  margin-bottom: 1.5rem;
+}
+
+
+
+/* Footer */
+footer {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  margin-top: auto;
+}
+
+footer strong {
+  color: #4ea8de;
+  font-weight: bold;
+}
+
+
+/* Animation */
+.rotate-animation {
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #222222;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444444;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* Copy IP */
+.join-button {
+  min-width: 260px;
+  text-align: center;
+}
+
+/* Sekcia s trojuholníkom */
+.triangle-shape-right {
+  position: relative;
+  background-color: white;
+  padding: 4rem 2rem;
+  clip-path: polygon(0 0, 200% 50%, 0 100%);
+  overflow: hidden;
+  z-index: 1;
+  margin-bottom: 30rem;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.triangle-shape-left {
+  position: relative;
+  background-color: white;
+  padding: 4rem 2rem;
+  clip-path: polygon(100% 0, -100% 50%, 100% 100%);
+  overflow: hidden;
+  z-index: 1;
+  margin-top: -30rem;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+/* Theme toggle */
+#theme-toggle {
+  background: #ffb300;
+  color: black;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-family: 'Minecraft', sans-serif;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#theme-toggle:hover {
+  background: #ffc107;
+}
+
+/* Tím sekcia */
+.team-section {
+  padding: 4rem 2rem;
+  background-color: #111111;
+}
+
+.team-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.team-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Karta */
+.team-card.fancy {
+  position: relative;
+  background-color: #1e1e1e;
+  border-radius: 16px;
+  padding: 2.5rem 1.2rem 2rem;
+  text-align: center;
+  width: 280px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.team-card.fancy:hover {
+  transform: translateY(-6px);
+}
+
+/* Horný farebný pásik */
+.team-card.fancy .admin-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  z-index: 1;
+}
+
+/* Avatar hráča */
+.team-card.fancy .avatar {
+  margin-top: 48px;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  border-radius: 12px;
+  z-index: 2;
+  position: relative;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Meno a role */
+.team-card.fancy h3 {
+  font-size: 1.3rem;
+  margin-top: 0.8rem;
+  color: #ffb300;
+}
+
+/* Prúžok pod rolou */
+.team-card.fancy .divider {
+  width: 40px;
+  height: 3px;
+  margin: 0.6rem auto;
+  border-radius: 3px;
+}
+
+/* Vek, štart */
+.team-card.fancy .meta {
+  font-size: 0.85rem;
+  color: #aaaaaa;
+  margin-bottom: 1rem;
+}
+
+/* Sociálne ikony */
+.team-card.fancy .socials a {
+  color: #ffffff;
+  font-size: 1.4rem;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.team-card.fancy .socials a:hover {
+  color: #7289da;
+}
+
+.team-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #111111;
+  text-align: center;
+  padding-top: 10px;
+  letter-spacing: 1px;
+}
+
+/* Dynmap */
+.dynmap-buttons {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dynmap-buttons button {
+  background-color: #ffb300;
+  color: #111;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  margin: 0 0.5rem;
+  font-family: 'Minecraft', sans-serif;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dynmap-buttons button.active,
+.dynmap-buttons button:hover {
+  background-color: #ffc107;
+}
+
+.dynmap-frame {
+  display: none;
+  width: 100%;
+  height: 900px;
+  border: none;
+  border-radius: 12px;
+}
+
+.dynmap-frame.active {
+  display: block;
+}
+
+.dynmap-open-btn {
+  background-color: #ffb300;
+  color: #111;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-family: 'Minecraft', sans-serif;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.dynmap-open-btn:hover {
+  background-color: #ffc107;
+}
+
+
+/* Donate */
+.donate-image {
+  margin-top: -40px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.donate-image img {
+  max-width: 220px;
+  margin-top: 35px;
+  transform: translateY(-10px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.donate-section {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.donate-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ffb300;
+}
+
+.donate-section p {
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.donate-button {
+  background-color: #ffb300;
+  color: black;
+  font-family: 'Minecraft', sans-serif;
+  text-decoration: none;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.donate-button:hover {
+  background-color: #ffc107;
+}
+
+
+/* Voting */
+
+.vote-card.disabled {
+  pointer-events: none;
+  filter: grayscale(100%) brightness(0.6);
+  opacity: 0.5;
+  cursor: default;
+}
+
+.vote-input {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  font-family: 'Minecraft', sans-serif;
+}
+
+.vote-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 16px;
+  cursor: pointer;
+  margin: 1rem 0;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  height: 100px;
+}
+
+.vote-card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.vote-card img {
+  height: 72px;
+  max-width: 160px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.vote-card:hover img {
+  transform: translateY(-6px);
+}
+
+.vote-card.vote-1 {
+  border-left: 10px solid #ff7f3f;
+}
+
+.vote-card.vote-2 {
+  border-left: 10px solid #00bfff;
+}
+
+.vote-card.vote-3 {
+  border-left: 10px solid #3f51b5;
+}
+
+/* Sekcia generátory */
+.generators-section {
+  position: relative;
+  padding: 5rem 2rem;
+  overflow: hidden;
+}
+
+.generators-deco {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.generators-content {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  flex-wrap: nowrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.generators-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.generators-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.generators-visual {
+  flex: 0 0 320px;
+  height: 340px;
+  position: relative;
+}
+
+.gen-character {
+  width: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+.gen-block {
+  position: absolute;
+  animation: float 4s infinite ease-in-out;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.gen-block.small {
+  width: 40px;
+  height: 40px;
+}
+
+.gen-block.medium {
+  width: 60px;
+  height: 60px;
+}
+
+.gen-block.large {
+  width: 80px;
+  height: 80px;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
