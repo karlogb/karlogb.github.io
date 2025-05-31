@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Countdown to Our Date 💙</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .countdown-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      margin-bottom: 40px;
+      background: linear-gradient(45deg, var(--turquoise), var(--baby-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .countdown-timer {
+      font-size: 2.5rem;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 40px 60px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="countdown-title">Counting down to our movie date 🎬💙</h1>
+  <div id="countdown" class="countdown-timer">Loading...</div>
+
+  <script>
+    const countdown = () => {
+      const targetDate = new Date("2025-07-04T18:00:00").getTime();
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "It's time! 💙";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = 
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    };
+
+    setInterval(countdown, 1000);
+    countdown();
+  </script>
+
+</body>
+</html>

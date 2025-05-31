@@ -319,3 +319,16 @@ footer {
         font-size: 2rem;
     }
 }
+
+
+.countdown-box {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding: 15px 25px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    display: inline-block;
+    animation: pulse 3s infinite;
+}
