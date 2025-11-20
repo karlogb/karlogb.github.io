@@ -1,123 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-M8WJ64L6');</script>
-  <!-- End Google Tag Manager -->
-    <style data-vite-theme="" data-inject-first="">:root {
-    --background: 0 0% 100%;
---foreground: 20 14.3% 4.1%;
---muted: 60 4.8% 95.9%;
---muted-foreground: 25 5.3% 44.7%;
---popover: 0 0% 100%;
---popover-foreground: 20 14.3% 4.1%;
---card: 0 0% 100%;
---card-foreground: 20 14.3% 4.1%;
---border: 20 5.9% 90%;
---input: 20 5.9% 90%;
---primary: 346 82% 49%;
---primary-foreground: 1 100% 99%;
---secondary: 60 4.8% 95.9%;
---secondary-foreground: 24 9.8% 10%;
---accent: 60 4.8% 95.9%;
---accent-foreground: 24 9.8% 10%;
---destructive: 0 84.2% 60.2%;
---destructive-foreground: 60 9.1% 97.8%;
---ring: 20 14.3% 4.1%;
---radius: 0rem;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-      --background: 240 10% 3.9%;
---foreground: 0 0% 98%;
---muted: 240 3.7% 15.9%;
---muted-foreground: 240 5% 64.9%;
---popover: 240 10% 3.9%;
---popover-foreground: 0 0% 98%;
---card: 240 10% 3.9%;
---card-foreground: 0 0% 98%;
---border: 240 3.7% 15.9%;
---input: 240 3.7% 15.9%;
---primary: 346 82% 49%;
---primary-foreground: 1 100% 99%;
---secondary: 240 3.7% 15.9%;
---secondary-foreground: 0 0% 98%;
---accent: 240 3.7% 15.9%;
---accent-foreground: 0 0% 98%;
---destructive: 0 62.8% 30.6%;
---destructive-foreground: 0 0% 98%;
---ring: 240 4.9% 83.9%;
---radius: 0rem;
-  }
-}
-.light {
-    --background: 0 0% 100%;
---foreground: 20 14.3% 4.1%;
---muted: 60 4.8% 95.9%;
---muted-foreground: 25 5.3% 44.7%;
---popover: 0 0% 100%;
---popover-foreground: 20 14.3% 4.1%;
---card: 0 0% 100%;
---card-foreground: 20 14.3% 4.1%;
---border: 20 5.9% 90%;
---input: 20 5.9% 90%;
---primary: 346 82% 49%;
---primary-foreground: 1 100% 99%;
---secondary: 60 4.8% 95.9%;
---secondary-foreground: 24 9.8% 10%;
---accent: 60 4.8% 95.9%;
---accent-foreground: 24 9.8% 10%;
---destructive: 0 84.2% 60.2%;
---destructive-foreground: 60 9.1% 97.8%;
---ring: 20 14.3% 4.1%;
---radius: 0rem;
-}
-.dark {
-    --background: 240 10% 3.9%;
---foreground: 0 0% 98%;
---muted: 240 3.7% 15.9%;
---muted-foreground: 240 5% 64.9%;
---popover: 240 10% 3.9%;
---popover-foreground: 0 0% 98%;
---card: 240 10% 3.9%;
---card-foreground: 0 0% 98%;
---border: 240 3.7% 15.9%;
---input: 240 3.7% 15.9%;
---primary: 346 82% 49%;
---primary-foreground: 1 100% 99%;
---secondary: 240 3.7% 15.9%;
---secondary-foreground: 0 0% 98%;
---accent: 240 3.7% 15.9%;
---accent-foreground: 0 0% 98%;
---destructive: 0 62.8% 30.6%;
---destructive-foreground: 0 0% 98%;
---ring: 240 4.9% 83.9%;
---radius: 0rem;
-}</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karol Bolgar | Data Engineer</title>
+    <meta name="description"
+        content="Portfolio of Karol Bolgar, a Data Engineer specializing in ETL pipelines, data warehousing, and cloud infrastructure.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Karol Bolgar | Data Engineer & ETL Developer</title>
-    <meta name="description" content="Portfolio of Karol Bolgar, Data Engineer and ETL Developer specializing in data engineering, ETL development, and cloud solutions." />
-    <meta name="keywords" content="data engineer, ETL, data warehousing, data modeling, Airflow, dbt, Snowflake, cloud infrastructure" />
-    <meta name="author" content="Karol Bolgar" />
-    <meta property="og:title" content="Karol Bolgar | Data Engineer" /> 
-    <meta property="og:description" content="Portfolio of Karol Bolgar, Data Engineer and ETL Developer specializing in data engineering, ETL development, and cloud solutions." />
-    <meta property="og:type" content="website" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <script type="module" crossorigin src="/assets/index-BaFC_uWD.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BRG4YQqC.css">
-  </head>
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M8WJ64L6"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-    <div id="root"></div>
-  </body>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <nav class="navbar">
+        <div class="logo">&lt;KB /&gt;</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Stack</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <i data-feather="menu"></i>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content reveal">
+                <p class="kicker">Hello, I am</p>
+                <h1>Karol Bolgar</h1>
+                <h2 class="typing-container">I build <span id="typing-text"></span></h2>
+                <p class="hero-desc">Transforming raw data into actionable insights. Specialized in scalable ETL
+                    pipelines, cloud architecture, and big data solutions.</p>
+                <div class="cta-group">
+                    <a href="#projects" class="btn btn-primary">View Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title reveal">About Me</h2>
+                <div class="about-grid reveal">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                            <span class="terminal-title">karol_profile.json</span>
+                        </div>
+                        <div class="terminal-body">
+                            <pre><code class="json">{
+  "name": "Karol Bolgar",
+  "role": "Data Engineer",
+  "location": "Slovakia",
+  "focus": [
+    "Data Warehousing",
+    "ETL/ELT Pipelines",
+    "Cloud Infrastructure",
+    "Data Modeling"
+  ]
+}</code></pre>
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <p>
+                            I am a passionate Data Engineer with a knack for solving complex data problems. My journey
+                            started with a curiosity for how massive datasets can drive business decisions, leading me
+                            to master the art of data architecture.
+                        </p>
+                        <p>
+                            I thrive in environments where performance and scalability are paramount. Whether it's
+                            optimizing SQL queries or architecting a serverless data lake, I enjoy the challenge of
+                            making data accessible and reliable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title reveal">Tech Stack</h2>
+                <div class="skills-grid reveal">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i data-feather="database"></i></div>
+                        <h3>Data Warehousing & DBs</h3>
+                        <p>Snowflake, BigQuery, PostgreSQL, Redis, MongoDB, Data Modeling</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i data-feather="server"></i></div>
+                        <h3>ETL & Orchestration</h3>
+                        <p>Apache Airflow, dbt, Kafka, Spark, Python (Pandas/Polars)</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i data-feather="cloud"></i></div>
+                        <h3>Cloud & DevOps</h3>
+                        <p>AWS, GCP, Docker, Kubernetes, Terraform, CI/CD</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i data-feather="code"></i></div>
+                        <h3>Languages & Tools</h3>
+                        <p>Python, SQL, JavaScript, Bash, Git, Google Drive API</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title reveal">Featured Projects</h2>
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <article class="project-card reveal">
+                        <div class="project-content">
+                            <div class="project-overline">ETL Pipeline</div>
+                            <h3 class="project-title">SuperfakturaETL</h3>
+                            <div class="project-desc">
+                                <p>ETL pipeline for syncing and uploading SuperFaktura data to Google BigQuery. Includes
+                                    full and incremental loads, transformation logic, and modular architecture.</p>
+                            </div>
+                            <ul class="project-tech">
+                                <li>Python</li>
+                                <li>BigQuery</li>
+                                <li>ETL</li>
+                                <li>API</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="https://github.com/karlogb/SuperfakturaETL" target="_blank"
+                                    class="github-link"><i data-feather="github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card reveal">
+                        <div class="project-content">
+                            <div class="project-overline">Data Processing</div>
+                            <h3 class="project-title">fhb-data-pipeline</h3>
+                            <div class="project-desc">
+                                <p>ETL pipeline for fetching and transforming product data from the FHB API using Python
+                                    and Polars. High-performance data processing.</p>
+                            </div>
+                            <ul class="project-tech">
+                                <li>Python</li>
+                                <li>Polars</li>
+                                <li>API</li>
+                                <li>Data Processing</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="https://github.com/karlogb/fhb-data-pipeline" target="_blank"
+                                    class="github-link"><i data-feather="github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-card reveal">
+                        <div class="project-content">
+                            <div class="project-overline">Automation</div>
+                            <h3 class="project-title">InvoiceFetcher</h3>
+                            <div class="project-desc">
+                                <p>Automation tool that fetches invoice data from Google Drive spreadsheets and sends it
+                                    to a PHP backend. Streamlines financial data collection.</p>
+                            </div>
+                            <ul class="project-tech">
+                                <li>Google Drive API</li>
+                                <li>Automation</li>
+                                <li>PHP Integration</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="https://github.com/karlogb/InvoiceFetcher" target="_blank"
+                                    class="github-link"><i data-feather="github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4 -->
+                    <article class="project-card reveal">
+                        <div class="project-content">
+                            <div class="project-overline">XML Processing</div>
+                            <h3 class="project-title">product-xml-etl-pipeline</h3>
+                            <div class="project-desc">
+                                <p>Lightweight ETL pipeline for downloading, preprocessing, and presenting product data
+                                    from XML feeds using Polars. Efficiently handles large XML datasets.</p>
+                            </div>
+                            <ul class="project-tech">
+                                <li>Python</li>
+                                <li>Polars</li>
+                                <li>XML</li>
+                                <li>ETL</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="https://github.com/karlogb/product-xml-etl-pipeline" target="_blank"
+                                    class="github-link"><i data-feather="github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container contact-container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="contact-text">
+                    I'm currently open to new opportunities and collaborations. Whether you have a question or just want
+                    to say hi, I'll try my best to get back to you!
+                </p>
+                <a href="mailto:karol@nulllogic.eu" class="btn btn-primary big-btn">Say Hello</a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="social-links">
+                <a href="https://github.com/karlogb" target="_blank"><i data-feather="github"></i></a>
+                <a href="https://www.linkedin.com/in/karol-bolgar/" target="_blank"><i data-feather="linkedin"></i></a>
+            </div>
+            <p>Designed & Built by Karol Bolgar</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+
 </html>
